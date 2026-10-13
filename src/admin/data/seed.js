@@ -320,37 +320,37 @@ export function seedOrders(count = 1450) {
 export function seedStaff() {
   return [
     {
-      id: 'STF-0001', name: 'Super Admin', email: 'admin@sawonmart.com', phone: '8503988085',
+      id: 'STF-0001', name: 'Super Admin', email: 'admin@sawonstore.in', phone: '8503988085',
       role: 'superadmin', department: 'Management', status: 'active',
       joinedAt: '2024-01-04', salary: 0, workingHours: '10:00–19:00',
       attendance: 100, sales: 0, twoFactor: true, avatar: 'brand/avatar-a.svg',
     },
     {
-      id: 'STF-0002', name: 'Store Manager', email: 'manager@sawonmart.com', phone: '8503988086',
+      id: 'STF-0002', name: 'Store Manager', email: 'manager@sawonstore.in', phone: '8503988086',
       role: 'manager', department: 'Operations', status: 'active',
       joinedAt: '2024-06-11', salary: 45000, workingHours: '10:00–18:00',
       attendance: 96, sales: 0, twoFactor: true, avatar: 'brand/avatar-b.svg',
     },
     {
-      id: 'STF-0003', name: 'Rakesh Yadav', email: 'rakesh@sawonmart.com', phone: '8503988087',
+      id: 'STF-0003', name: 'Rakesh Yadav', email: 'rakesh@sawonstore.in', phone: '8503988087',
       role: 'staff', department: 'Sales', status: 'active',
       joinedAt: '2025-01-20', salary: 22000, workingHours: '10:00–18:00',
       attendance: 92, sales: 0, twoFactor: false, avatar: 'brand/avatar-c.svg',
     },
     {
-      id: 'STF-0004', name: 'Priya Sharma', email: 'priya@sawonmart.com', phone: '8503988088',
+      id: 'STF-0004', name: 'Priya Sharma', email: 'priya@sawonstore.in', phone: '8503988088',
       role: 'staff', department: 'Support', status: 'active',
       joinedAt: '2025-04-02', salary: 21000, workingHours: '11:00–19:00',
       attendance: 98, sales: 0, twoFactor: true, avatar: 'brand/avatar-a.svg',
     },
     {
-      id: 'STF-0005', name: 'Md. Irfan', email: 'irfan@sawonmart.com', phone: '8503988089',
+      id: 'STF-0005', name: 'Md. Irfan', email: 'irfan@sawonstore.in', phone: '8503988089',
       role: 'staff', department: 'Warehouse', status: 'active',
       joinedAt: '2025-07-15', salary: 20000, workingHours: '09:00–17:00',
       attendance: 89, sales: 0, twoFactor: false, avatar: 'brand/avatar-b.svg',
     },
     {
-      id: 'STF-0006', name: 'Sunita Kumari', email: 'sunita@sawonmart.com', phone: '8503988090',
+      id: 'STF-0006', name: 'Sunita Kumari', email: 'sunita@sawonstore.in', phone: '8503988090',
       role: 'staff', department: 'Sales', status: 'suspended',
       joinedAt: '2025-03-08', salary: 19500, workingHours: '10:00–18:00',
       attendance: 71, sales: 0, twoFactor: false, avatar: 'brand/avatar-c.svg',

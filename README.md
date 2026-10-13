@@ -31,10 +31,11 @@ npm run dev      # http://localhost:5173
 
 Hosted on **Firebase Hosting**, project `sawonstore-b`.
 
-**Live:** https://sawonstore-b.web.app
+- **Production domain:** https://www.sawonstore.in
+- **Fallback:** https://sawonstore-b.web.app
 
 ```bash
-npm run deploy          # build, verify assets, then upload to Firebase
+npm run deploy          # build, verify assets, generate sitemap, then upload
 ```
 
 Requires the Firebase CLI and an authenticated session:
@@ -47,6 +48,40 @@ firebase login
 The target project is pinned in `.firebaserc`, so plain `firebase deploy` works
 too. To deploy somewhere else: `firebase use --add`, or pass
 `--project <id>`.
+
+### Custom domain
+
+`www.sawonstore.in` is declared once as `SITE.origin` in
+`src/utils/constants.js`; every canonical tag, Open Graph URL, JSON-LD block
+and the sitemap derive from it.
+
+**`docs/domain-setup.md` has the full walkthrough** — the DNS records to create,
+and the one console step people miss. That step is adding the domain to
+**Authentication → Settings → Authorized domains**. If you skip it, *Continue with
+Google* on the new domain redirects to Google, returns, and shows an error. The
+same symptom appears when the Google provider itself is disabled, so that list is
+the first thing to check.
+
+DNS records cannot be created from this repository — they are changed at your
+registrar. Everything else is already deployed.
+
+### SEO and the sitemap
+
+- `public/sitemap.xml` is **generated at build time** by
+  `scripts/generate-sitemap.mjs`, from the same `PRODUCTS` array the storefront
+  renders, so it cannot drift from the catalogue. It contains 1 homepage URL
+  plus one per product.
+- The build **fails** if the sitemap generator and `index.html` disagree about
+  the origin, so a domain change cannot silently leave the sitemap pointing at
+  the old host.
+- Canonical tags are set **per route** in `useDocumentMeta()`. A single canonical
+  pinned to the homepage would tell crawlers every product page is a duplicate
+  of `/`, which is how a catalogue ends up with only the homepage indexed.
+- The 404 route emits `noindex, follow` and removes the canonical entirely.
+  Because this is an SPA, a bad URL returns **HTTP 200** with the 404 page
+  rendered client-side — without an explicit `noindex`, mistyped links get
+  indexed as real content. `noindex` and a canonical are contradictory signals,
+  so the 404 drops the canonical rather than pointing it at the homepage.
 
 **Hosting configuration** (`firebase.json`):
 
@@ -62,6 +97,8 @@ too. To deploy somewhere else: `firebase use --add`, or pass
   `X-Frame-Options`, `Referrer-Policy` and `Permissions-Policy` on all
   responses. (`'unsafe-inline'` is needed for React inline styles and the
   JSON-LD block.)
+- No CSP change is needed for a custom domain: the new host is same-origin, so
+  `'self'` already covers it.
 
 ---
 

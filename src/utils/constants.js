@@ -8,10 +8,31 @@ export const SITE = {
   tagline: 'Online Shopping for Everything',
   foundedYear: 2007,
   currentYear: 2026,
-  domain: 'sawonmart.com',
-  email: 'help@sawonmart.com',
+
+  /**
+   * Canonical production origin.
+   *
+   * Everything that needs an absolute URL — canonical tags, Open Graph, the
+   * sitemap, JSON-LD — derives from here rather than repeating the hostname.
+   * A previous build hard-coded `www.sawonmart.com` in index.html and
+   * robots.txt, which silently pointed search engines at a domain that was
+   * never registered. One constant is the only thing to change when the domain
+   * moves.
+   *
+   * Protocol and `www` are deliberate: this is the address every other URL is
+   * built from, so it must be the single canonical host. The bare apex
+   * redirects here rather than the other way round.
+   */
+  origin: 'https://www.sawonstore.in',
+  domain: 'www.sawonstore.in',
+
+  email: 'help@sawonstore.in',
   phone: '1800-208-9898',
 };
+
+/** Builds an absolute URL from a site-relative path. */
+export const absoluteUrl = (path = '/') =>
+  `${SITE.origin}${path.startsWith('/') ? path : `/${path}`}`;
 
 /**
  * WhatsApp contact.

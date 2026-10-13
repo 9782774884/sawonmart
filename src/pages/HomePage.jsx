@@ -21,7 +21,8 @@ export default function HomePage() {
   useDocumentMeta(
     `${SITE.name} – ${SITE.tagline}`,
     `${SITE.name} par khojein mobiles, laptops, fashion, beauty, home appliances aur groceries. ` +
-      'Best deals, fast delivery aur 100% authentic products.'
+      'Best deals, fast delivery aur 100% authentic products.',
+    '/'
   );
 
   return (

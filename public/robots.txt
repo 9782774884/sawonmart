@@ -4,8 +4,10 @@
 User-agent: *
 Allow: /
 
-# Build output and tooling must never be indexed
+# Admin panel must never appear in search results, and /dist/ and /tools/ are
+# build output rather than content.
+Disallow: /admin
 Disallow: /dist/
 Disallow: /tools/
 
-Sitemap: https://www.sawonmart.com/sitemap.xml
+Sitemap: https://www.sawonstore.in/sitemap.xml

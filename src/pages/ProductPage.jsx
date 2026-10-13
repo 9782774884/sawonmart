@@ -158,9 +158,15 @@ function ProductMeta({ product, categoryLabel }) {
   useDocumentMeta(
     product ? `${product.title} | ${SITE.name}` : `Product nahi mila | ${SITE.name}`,
     product
-      ? `${product.brand} ${product.title} — ${product.highlights.join(', ')}. ` +
+      ? `${product.brand} ${product.title} – ${product.highlights.join(', ')}. ` +
           `${formatPrice(product.price)} par, delivery ${product.delivery}.`
-      : 'Ye product abhi available nahi hai.'
+      : 'Ye product abhi available nahi hai.',
+    // Per-product canonical. Without it every product page would inherit the
+    // homepage URL and be treated as a duplicate of it.
+    product ? `/product/${product.id}` : undefined,
+    // `image` is stored relative to /assets/images/, so it needs the prefix to
+    // become a real absolute URL — see ProductCard, which does the same.
+    product ? `/assets/images/${product.image}` : undefined
   );
 
   // Nothing to render; this component only manages document metadata.

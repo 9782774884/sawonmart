@@ -5,24 +5,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#2874f0" />
 
-    <title>SawonMart – Online Shopping for Electronics, Fashion, Home &amp; More</title>
+    <title>SawonMart â€“ Online Shopping for Electronics, Fashion, Home &amp; More</title>
     <meta
       name="description"
       content="SawonMart par khojein mobiles, laptops, fashion, beauty, home appliances aur groceries. Best deals, fast delivery aur 100% authentic products."
     />
     <meta name="author" content="SawonMart" />
-    <link rel="canonical" href="https://www.sawonmart.com/" />
+
+    <!-- Default canonical for the homepage. Each route overwrites these at
+         runtime via useDocumentMeta() â€” a single static canonical would tell
+         search engines that every product page is a duplicate of the homepage.
+         Keep the hostname in step with SITE.origin in src/utils/constants.js. -->
+    <link rel="canonical" href="https://www.sawonstore.in/" />
 
     <!-- Open Graph / social sharing -->
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="SawonMart" />
-    <meta property="og:title" content="SawonMart – Online Shopping for Everything" />
+    <meta property="og:title" content="SawonMart â€“ Online Shopping for Everything" />
     <meta
       property="og:description"
-      content="Mobiles, fashion, home, beauty aur groceries – sab kuch best price par."
+      content="Mobiles, fashion, home, beauty aur groceries â€“ sab kuch best price par."
     />
     <meta property="og:locale" content="hi_IN" />
-    <meta property="og:image" content="https://www.sawonmart.com/assets/images/banners/hero-1.svg" />
+    <meta property="og:url" content="https://www.sawonstore.in/" />
+    <meta
+      property="og:image"
+      content="https://www.sawonstore.in/assets/images/banners/hero-1.svg"
+    />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="SawonMart â€“ Online Shopping for Everything" />
+    <meta
+      name="twitter:image"
+      content="https://www.sawonstore.in/assets/images/banners/hero-1.svg"
+    />
+
+    <!-- Ask browsers to resolve the bare apex to www, which is the canonical
+         host. The redirect only takes effect once the apex is actually pointed
+         at Firebase, and it saves visitors typing sawonstore.in from landing
+         on a host that will 404. -->
+    <link rel="alternate" hreflang="x-default" href="https://www.sawonstore.in/" />
 
     <link rel="icon" type="image/svg+xml" href="/assets/images/brand/favicon.svg" />
     <link rel="apple-touch-icon" href="/assets/images/brand/logo-mark.svg" />
