@@ -1,11 +1,37 @@
 # Custom domain setup — `www.sawonstore.in`
 
-The live production origin is **`https://www.sawonstore.in`**. It is declared once
-in `src/utils/constants.js` as `SITE.origin`, and every absolute URL in the
-project — canonical tags, Open Graph, JSON-LD, the sitemap — is derived from it.
+> ## ⚠️ Read this first: the domain is not registered
+>
+> `sawonstore.in` and `www.sawonstore.in` both return **NXDOMAIN** from Google
+> and Cloudflare resolvers, while `nic.in` and `google.in` resolve normally. The
+> domain has never been registered, so there is no DNS to edit yet.
+>
+> **This is why Firebase refuses the domain.** Firebase proves you own a domain
+> by making you add a `TXT` record to it. You cannot add a `TXT` record to a
+> domain that does not exist, so provisioning fails before it starts.
+>
+> **Step 0: register the domain** at a `.in`-capable registrar (Tucows, GoDaddy,
+> Namecheap, Hostinger, BigRock). Roughly ₹600–1,200/year, and most registrars
+> require a KYC/ID upload for Indian ccTLDs, so allow a few hours.
+>
+> Everything below applies once `nslookup www.sawonstore.in` returns an address.
 
-Two steps are required, and **both** must be done. The second is the one that
-silently breaks Google sign-in if you skip it.
+The intended production origin is **`https://www.sawonstore.in`**. Until it is
+registered the site canonicalises to `https://sawonstore-b.web.app`, which
+resolves — canonical tags must never point at a host that cannot be fetched.
+
+Two configuration steps are then required, and **both** must be done. The second
+is the one that silently breaks Google sign-in if you skip it.
+
+Once live, set the sitemap host for that build and swap the constants:
+
+```bash
+SITE_ORIGIN=https://www.sawonstore.in npm run deploy
+```
+
+Then in `src/utils/constants.js`, exchange `origin` and `plannedOrigin`, and
+update the `Sitemap:` line in `public/robots.txt`. The build fails if the
+sitemap generator and `index.html` disagree, so the two cannot drift apart.
 
 ---
 

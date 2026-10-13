@@ -31,8 +31,8 @@ npm run dev      # http://localhost:5173
 
 Hosted on **Firebase Hosting**, project `sawonstore-b`.
 
-- **Production domain:** https://www.sawonstore.in
-- **Fallback:** https://sawonstore-b.web.app
+- **Production domain:** https://sawonstore-b.web.app
+- **Intended custom domain:** `www.sawonstore.in` — **not registered yet**, see below
 
 ```bash
 npm run deploy          # build, verify assets, generate sitemap, then upload
@@ -51,19 +51,47 @@ too. To deploy somewhere else: `firebase use --add`, or pass
 
 ### Custom domain
 
-`www.sawonstore.in` is declared once as `SITE.origin` in
-`src/utils/constants.js`; every canonical tag, Open Graph URL, JSON-LD block
-and the sitemap derive from it.
+The intended production domain is `www.sawonstore.in`, but it is **not yet
+registered** — both `sawonstore.in` and `www.sawonstore.in` return **NXDOMAIN**
+from every public resolver, while `nic.in` and other `.in` domains resolve
+normally. Firebase therefore refuses it: proving ownership requires adding a
+`TXT` record, and you cannot add a `TXT` record to a domain that does not exist.
 
-**`docs/domain-setup.md` has the full walkthrough** — the DNS records to create,
-and the one console step people miss. That step is adding the domain to
-**Authentication → Settings → Authorized domains**. If you skip it, *Continue with
-Google* on the new domain redirects to Google, returns, and shows an error. The
-same symptom appears when the Google provider itself is disabled, so that list is
-the first thing to check.
+Register the domain first, then finish the setup. **`docs/domain-setup.md` has
+the exact DNS records and the console steps** — including the one that is easy to
+miss: the domain must also be added to **Authentication → Settings → Authorized
+domains**, or *Continue with Google* fails on the new host with an error
+identical to "provider not enabled", so check that list first.
 
-DNS records cannot be created from this repository — they are changed at your
-registrar. Everything else is already deployed.
+DNS records cannot be changed from this repository; they are edited at your
+registrar.
+
+### How canonical URLs decide
+
+Canonical tags must never point at a host that cannot be fetched — telling a
+search engine to index a dead URL is worse than naming the working one. So the
+origin is resolved by `canonicalOrigin()` in `src/utils/constants.js`:
+
+| Situation | Canonical used |
+| --------- | -------------- |
+| Page served from a **recognised** host (`www.sawonstore.in`, `sawonstore.in`, `sawonstore-b.web.app`) | **that host** |
+| Anything else — localhost, a typo domain, a preview URL, `null` | `SITE.origin` (the Firebase fallback) |
+
+The allow-list matters. Using a bare `window.location.origin` would let any host
+that happens to serve the bundle declare itself canonical — a lookalike domain or
+a stale preview would split the site's ranking across duplicates.
+
+`public/sitemap.xml` is the exception: a static file must name exactly one host,
+so it uses `SITE.origin`, overridable per build:
+
+```bash
+SITE_ORIGIN=https://www.sawonstore.in npm run build
+```
+
+**When the domain goes live**, set `SITE_ORIGIN`, swap `origin` and
+`plannedOrigin` in `src/utils/constants.js`, and update the `Sitemap:` line in
+`public/robots.txt`. The build **fails** if the sitemap generator and
+`index.html` disagree, so these cannot silently drift apart.
 
 ### SEO and the sitemap
 

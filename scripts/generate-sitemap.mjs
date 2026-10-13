@@ -25,13 +25,23 @@ const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const OUT = join(ROOT, 'public', 'sitemap.xml');
 
 /**
- * Single source of truth for the public origin.
+ * The host every URL in the sitemap is written against.
  *
- * Mirrors SITE.origin in src/utils/constants.js. A plain .js file cannot be
- * imported here without Vite's transform, so the value is duplicated — but the
- * check below fails the build if the two ever disagree.
+ * A sitemap is a static file, so unlike the runtime canonical tags it has to
+ * name exactly one host — and that host must resolve, because naming an
+ * unregistered domain advertises URLs no crawler can fetch.
+ *
+ * `www.sawonstore.in` is currently unregistered (returns NXDOMAIN), so the
+ * default is the Firebase fallback. Once the domain is live, either set
+ * SITE_ORIGIN at build time or change this default. The check below fails the
+ * build if this disagrees with the canonical declared in index.html, so the two
+ * cannot silently drift:
+ *
+ *   SITE_ORIGIN=https://www.sawonstore.in npm run build
  */
-const ORIGIN = 'https://www.sawonstore.in';
+const ORIGIN = (
+  process.env.SITE_ORIGIN || 'https://sawonstore-b.web.app'
+).replace(/\/+$/, '');
 
 /** The declared homepage origin in index.html, used for the consistency check. */
 const INDEX_ORIGIN = /<link rel="canonical" href="(https?:\/\/[^/"]+)/.exec(

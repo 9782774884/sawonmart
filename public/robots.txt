@@ -10,4 +10,4 @@ Disallow: /admin
 Disallow: /dist/
 Disallow: /tools/
 
-Sitemap: https://www.sawonstore.in/sitemap.xml
+Sitemap: https://sawonstore-b.web.app/sitemap.xml

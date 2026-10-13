@@ -3,36 +3,69 @@
  * routes or feature flags belongs here instead of being hard-coded.
  */
 
+/**
+ * Canonical production origin.
+ *
+ * Everything that needs an absolute URL — canonical tags, Open Graph, the
+ * sitemap, JSON-LD — derives from here rather than repeating the hostname.
+ *
+ * `sawonstore.in` is NOT yet registered (it returns NXDOMAIN), so it is kept
+ * as `plannedOrigin` and the default below is the Firebase fallback, which is
+ * the only host that actually resolves today. Pointing canonical tags at a
+ * domain that does not exist tells search engines to index a URL that cannot
+ * be fetched, which is worse than pointing at the working fallback.
+ *
+ * Swap these two values once the custom domain is live — nothing else to edit.
+ */
+const origin = 'https://sawonstore-b.web.app';
+const plannedOrigin = 'https://www.sawonstore.in';
+
+/**
+ * Every host allowed to serve canonical URLs.
+ *
+ * A plain `window.location.origin` would let whatever host happens to serve the
+ * bundle claim to be the real site: a mistyped domain, a stale preview URL, or
+ * a copy of this deployment somewhere else would all be declared canonical and
+ * split the site's ranking across duplicates. Restricting it to hosts we
+ * control means auto-detection cannot be abused.
+ */
+const knownOrigins = [plannedOrigin, 'https://sawonstore.in', origin];
+
 export const SITE = {
   name: 'SawonMart',
   tagline: 'Online Shopping for Everything',
   foundedYear: 2007,
   currentYear: 2026,
 
-  /**
-   * Canonical production origin.
-   *
-   * Everything that needs an absolute URL — canonical tags, Open Graph, the
-   * sitemap, JSON-LD — derives from here rather than repeating the hostname.
-   * A previous build hard-coded `www.sawonmart.com` in index.html and
-   * robots.txt, which silently pointed search engines at a domain that was
-   * never registered. One constant is the only thing to change when the domain
-   * moves.
-   *
-   * Protocol and `www` are deliberate: this is the address every other URL is
-   * built from, so it must be the single canonical host. The bare apex
-   * redirects here rather than the other way round.
-   */
-  origin: 'https://www.sawonstore.in',
-  domain: 'www.sawonstore.in',
+  /** Default origin. Also the sitemap's host, and the first-paint canonical. */
+  origin,
+  plannedOrigin,
+  knownOrigins,
 
   email: 'help@sawonstore.in',
   phone: '1800-208-9898',
 };
 
+/**
+ * Resolves the origin to use for absolute URLs at runtime.
+ *
+ * Prefers the host actually serving the page, so the fallback domain and the
+ * custom domain each self-canonicalise correctly — but only if that host is one
+ * we recognise. Anything else falls back to SITE.origin.
+ *
+ * Used by useDocumentMeta() at runtime. The sitemap is a static file and has to
+ * name exactly one host, so it uses SITE.origin instead (overridable at build
+ * time with SITE_ORIGIN).
+ */
+export function canonicalOrigin() {
+  if (typeof window === 'undefined') return SITE.origin;
+  const here = window.location.origin;
+  return SITE.knownOrigins.includes(here) ? here : SITE.origin;
+}
+
 /** Builds an absolute URL from a site-relative path. */
-export const absoluteUrl = (path = '/') =>
-  `${SITE.origin}${path.startsWith('/') ? path : `/${path}`}`;
+export const absoluteUrl = (path = '/', base = canonicalOrigin()) =>
+  `${base}${path.startsWith('/') ? path : `/${path}`}`;
 
 /**
  * WhatsApp contact.
