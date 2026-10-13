@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 80" width="200" height="80" fill="none" role="img">
+
+<rect width="200" height="80" rx="10" fill="#fff"/>
+<text x="100" y="52" text-anchor="middle" font-family="system-ui,-apple-system,Segoe UI,sans-serif"
+      font-size="30" font-weight="700" letter-spacing="2"
+      fill="#ffc915">realme</text>
+</svg>

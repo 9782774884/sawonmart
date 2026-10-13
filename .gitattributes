@@ -1,0 +1,27 @@
+# Normalise line endings in the repository itself.
+#
+# Without this, a Windows checkout (core.autocrlf=true) rewrites every file to
+# CRLF, and the next Linux or CI checkout rewrites them back — producing a diff
+# that touches every line of every file. Storing LF and converting only at
+# checkout keeps the tree stable across platforms.
+
+* text=auto eol=lf
+
+# Windows cannot read a LF-only shell/batch file correctly.
+*.bat    text eol=crlf
+*.cmd    text eol=crlf
+*.ps1    text eol=crlf
+
+# Binary assets must never be line-ending converted or diffed as text.
+*.png    binary
+*.jpg    binary
+*.jpeg   binary
+*.gif    binary
+*.webp   binary
+*.ico    binary
+*.woff   binary
+*.woff2  binary
+*.pdf    binary
+
+# Lockfiles are generated; keep them out of language stats and renames.
+package-lock.json linguist-generated=true -diff

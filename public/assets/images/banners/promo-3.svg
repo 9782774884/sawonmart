@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 250" width="520" height="250" fill="none" preserveAspectRatio="xMidYMid slice">
+<defs><linearGradient id="p2" x1="0" y1="0" x2="1" y2="1">
+  <stop offset="0" stop-color="#00a3bf"/>
+  <stop offset="1" stop-color="#00566b"/>
+</linearGradient></defs>
+<rect width="520" height="250" rx="8" fill="url(#p2)"/>
+<circle cx="152" cy="110" r="4" fill="#fff" opacity=".10"/>
+<circle cx="289" cy="201" r="7" fill="#fff" opacity=".10"/>
+<circle cx="426" cy="92" r="10" fill="#fff" opacity=".10"/>
+<circle cx="103" cy="183" r="13" fill="#fff" opacity=".10"/>
+<circle cx="240" cy="74" r="4" fill="#fff" opacity=".10"/>
+<circle cx="377" cy="165" r="7" fill="#fff" opacity=".10"/>
+<circle cx="54" cy="56" r="10" fill="#fff" opacity=".10"/>
+<circle cx="191" cy="147" r="13" fill="#fff" opacity=".10"/>
+<circle cx="328" cy="38" r="4" fill="#fff" opacity=".10"/>
+<circle cx="465" cy="129" r="7" fill="#fff" opacity=".10"/>
+<circle cx="142" cy="220" r="10" fill="#fff" opacity=".10"/>
+<circle cx="279" cy="111" r="13" fill="#fff" opacity=".10"/>
+<circle cx="416" cy="202" r="4" fill="#fff" opacity=".10"/>
+<circle cx="93" cy="93" r="7" fill="#fff" opacity=".10"/>
+<circle cx="230" cy="184" r="10" fill="#fff" opacity=".10"/>
+<circle cx="367" cy="75" r="13" fill="#fff" opacity=".10"/>
+<circle cx="44" cy="166" r="4" fill="#fff" opacity=".10"/>
+<circle cx="181" cy="57" r="7" fill="#fff" opacity=".10"/>
+<circle cx="318" cy="148" r="10" fill="#fff" opacity=".10"/>
+<circle cx="455" cy="39" r="13" fill="#fff" opacity=".10"/>
+<circle cx="132" cy="130" r="4" fill="#fff" opacity=".10"/>
+<circle cx="269" cy="221" r="7" fill="#fff" opacity=".10"/>
+<circle cx="406" cy="112" r="10" fill="#fff" opacity=".10"/>
+<circle cx="83" cy="203" r="13" fill="#fff" opacity=".10"/>
+<circle cx="220" cy="94" r="4" fill="#fff" opacity=".10"/>
+<circle cx="357" cy="185" r="7" fill="#fff" opacity=".10"/>
+<path d="M0 190c120-40 210 20 330-14s180-52 260-30v104H0z" fill="#000" opacity=".16"/>
+<circle cx="430" cy="70" r="86" fill="#fff" opacity=".10"/>
+<rect x="34" y="150" width="230" height="18" rx="9" fill="#fff" opacity=".55"/>
+<rect x="34" y="182" width="150" height="14" rx="7" fill="#fff" opacity=".35"/>
+</svg>

@@ -1,0 +1,283 @@
+/* ==========================================================================
+   HEADER
+   Sticky bar: logo + search + account actions.
+   ========================================================================== */
+
+.top-strip {
+  background: linear-gradient(90deg, var(--c-blue-700), var(--c-blue-500));
+  color: var(--c-white);
+  font-size: var(--fs-xs);
+}
+
+.top-strip__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-4);
+  min-height: 32px;
+}
+
+.top-strip__text {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  font-weight: 500;
+}
+
+.top-strip__bolt {
+  color: var(--c-yellow-500);
+}
+
+.top-strip__links {
+  display: flex;
+  gap: var(--sp-5);
+  list-style: none;
+  padding: 0;
+}
+
+.top-strip__links a {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  white-space: nowrap;
+}
+
+.top-strip__links a:hover {
+  color: var(--c-yellow-500);
+}
+
+@media (max-width: 900px) {
+  .top-strip__links {
+    display: none;
+  }
+  .top-strip__inner {
+    justify-content: center;
+  }
+}
+
+/* ------------------------------------------------------------------ header */
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-header);
+  background: var(--c-blue-500);
+  color: var(--c-white);
+  box-shadow: var(--sh-sm);
+  transition: box-shadow var(--transition);
+}
+
+.header.is-stuck {
+  box-shadow: var(--sh-md);
+}
+
+.header__inner {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-4);
+  min-height: var(--header-h);
+}
+
+/* ---- logo ---- */
+.header__logo {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  flex-shrink: 0;
+}
+
+.header__logo img {
+  border-radius: var(--r-md);
+  background: var(--c-white);
+  padding: 2px;
+}
+
+.header__logo-text {
+  font-size: var(--fs-xl);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+}
+
+.header__logo-accent {
+  font-style: italic;
+  font-weight: 600;
+  opacity: 0.95;
+}
+
+/* ---- search slot ---- */
+.header__search {
+  flex: 1 1 auto;
+  min-width: 0;
+  max-width: 620px;
+}
+
+/* ---- actions ---- */
+.header__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-1);
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+.header__action {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  padding: var(--sp-2) var(--sp-3);
+  border-radius: var(--r-md);
+  color: var(--c-white);
+  white-space: nowrap;
+  transition: background var(--transition);
+}
+
+.header__action:hover,
+.header__action:focus-visible {
+  background: rgba(255, 255, 255, 0.14);
+}
+
+.header__action-text {
+  display: grid;
+  line-height: 1.2;
+}
+
+.header__action-sub {
+  font-size: var(--fs-xs);
+  /* No opacity here: a translucent white label drops below the 4.5:1 contrast
+     ratio on the blue header. Size + weight carry the hierarchy instead. */
+  color: var(--c-white);
+}
+
+.header__action-main {
+  font-size: var(--fs-base);
+  font-weight: 600;
+}
+
+.header__icon-btn {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--r-md);
+  color: var(--c-white);
+  transition: background var(--transition);
+}
+
+.header__icon-btn:hover,
+.header__icon-btn:focus-visible {
+  background: rgba(255, 255, 255, 0.14);
+}
+
+/* ---- cart badge ---- */
+.header__cart-icon {
+  position: relative;
+  display: grid;
+  place-items: center;
+}
+
+.header__cart-badge {
+  position: absolute;
+  top: -6px;
+  right: -10px;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 4px;
+  display: grid;
+  place-items: center;
+  background: var(--c-yellow-500);
+  color: #2a1c00;
+  font-size: 10px;
+  font-weight: 700;
+  border-radius: var(--r-full);
+  border: 2px solid var(--c-blue-500);
+}
+
+/* ---- kebab overflow menu ---- */
+.header__kebab {
+  position: relative;
+}
+
+.kebab-menu {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  z-index: var(--z-dropdown);
+  min-width: 220px;
+  padding: var(--sp-2);
+  background: var(--c-surface);
+  color: var(--c-text);
+  border-radius: var(--r-md);
+  box-shadow: var(--sh-lg);
+  animation: kebab-in 140ms ease-out;
+}
+
+@keyframes kebab-in {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+}
+
+.kebab-menu__item {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  padding: var(--sp-2) var(--sp-3);
+  border-radius: var(--r-sm);
+  font-size: var(--fs-base);
+  white-space: nowrap;
+}
+
+.kebab-menu__item:hover,
+.kebab-menu__item:focus-visible {
+  background: var(--c-grey-100);
+}
+
+/* ------------------------------------------------------------- responsive */
+
+@media (max-width: 1200px) {
+  .header__action--seller {
+    display: none;
+  }
+}
+
+@media (max-width: 900px) {
+  .header__inner {
+    gap: var(--sp-2);
+  }
+
+  .header__logo-text {
+    display: none;
+  }
+
+  /* Search collapses to a full-width row under the logo row. */
+  .header__search {
+    order: 3;
+    flex-basis: 100%;
+    max-width: none;
+  }
+
+  .header__inner {
+    flex-wrap: wrap;
+    padding-block: var(--sp-2);
+  }
+
+  .header__actions {
+    margin-left: auto;
+  }
+
+  /* `.u-only-sm` sets `display: none`; this higher-specificity rule restores
+     the icon button's grid layout on mobile. */
+  .header__actions .header__icon-btn {
+    display: grid;
+  }
+}
+
+@media (max-width: 420px) {
+  .header__action--login .header__action-text {
+    display: none;
+  }
+  .header__action--login {
+    padding-inline: var(--sp-1);
+  }
+}

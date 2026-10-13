@@ -1,0 +1,134 @@
+/* ==========================================================================
+   WHATSAPP FLOATING CONTACT BUTTON
+   Bottom-left so it never collides with the back-to-top button or the
+   toast stack (both bottom-right).
+   ========================================================================== */
+
+.wa-fab {
+  position: fixed;
+  left: var(--sp-4);
+  bottom: var(--sp-4);
+  z-index: var(--z-sticky);
+
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+
+  background: #25d366;
+  color: #06340f;
+  border-radius: var(--r-full);
+  box-shadow: var(--sh-lg);
+
+  transition:
+    transform var(--transition),
+    box-shadow var(--transition),
+    background var(--transition);
+}
+
+.wa-fab:hover,
+.wa-fab:focus-visible {
+  background: #1fbe59;
+  transform: translateY(-2px);
+  box-shadow: var(--sh-xl);
+}
+
+.wa-fab__icon {
+  display: grid;
+  place-items: center;
+}
+
+/* The label is a separate pill anchored beside the circle. Keeping it out of
+   flow means the button is exactly 56x56 at rest instead of a lopsided pill. */
+.wa-fab__label {
+  position: absolute;
+  left: calc(100% + var(--sp-2));
+  top: 50%;
+
+  padding: var(--sp-2) var(--sp-4);
+  background: var(--c-grey-800);
+  color: var(--c-white);
+  border-radius: var(--r-full);
+
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  white-space: nowrap;
+
+  opacity: 0;
+  transform: translateY(-50%) scaleX(0.7);
+  transform-origin: left center;
+  /* Must not swallow the hover that keeps the label open. */
+  pointer-events: none;
+  transition:
+    opacity var(--transition),
+    transform var(--transition);
+}
+
+.wa-fab:hover .wa-fab__label,
+.wa-fab:focus-visible .wa-fab__label {
+  opacity: 1;
+  transform: translateY(-50%) scaleX(1);
+}
+
+/* --- gentle attention pulse, suppressed on hover/focus --- */
+.wa-fab::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  border: 2px solid #25d366;
+  animation: wa-pulse 2.8s ease-out infinite 1.5s;
+  pointer-events: none;
+}
+
+.wa-fab:hover::after,
+.wa-fab:focus-visible::after {
+  animation: none;
+  opacity: 0;
+}
+
+@keyframes wa-pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.55;
+  }
+  70%,
+  100% {
+    transform: scale(1.25);
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wa-fab::after {
+    animation: none;
+    opacity: 0;
+  }
+  .wa-fab:hover,
+  .wa-fab:focus-visible {
+    transform: none;
+  }
+}
+
+/* ------------------------------------------------------------ responsive */
+
+@media (max-width: 900px) {
+  /* Clear the product page's full-width sticky buy bar (66px tall). */
+  .wa-fab {
+    bottom: 82px;
+    left: var(--sp-3);
+    width: 50px;
+    height: 50px;
+  }
+
+  /* A hover-revealed label is useless on touch, so hide it entirely. */
+  .wa-fab__label {
+    display: none;
+  }
+}
+
+@media (max-width: 420px) {
+  .wa-fab {
+    bottom: 78px;
+  }
+}

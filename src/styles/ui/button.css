@@ -1,0 +1,134 @@
+/* ==========================================================================
+   BUTTON
+   ========================================================================== */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-2);
+  font-weight: 600;
+  line-height: 1;
+  white-space: nowrap;
+  border-radius: var(--r-md);
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition:
+    background var(--transition),
+    border-color var(--transition),
+    color var(--transition),
+    box-shadow var(--transition),
+    transform var(--transition);
+}
+
+.btn:active:not(:disabled) {
+  transform: translateY(1px);
+}
+
+.btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+/* ---- sizes ---- */
+.btn--sm {
+  padding: var(--sp-2) var(--sp-3);
+  font-size: var(--fs-sm);
+}
+.btn--md {
+  padding: var(--sp-3) var(--sp-5);
+  font-size: var(--fs-base);
+}
+.btn--lg {
+  padding: var(--sp-4) var(--sp-6);
+  font-size: var(--fs-lg);
+}
+
+.btn--block {
+  width: 100%;
+}
+
+/* ---- variants ---- */
+.btn--primary {
+  background: var(--c-blue-500);
+  color: var(--c-white);
+}
+.btn--primary:hover:not(:disabled) {
+  background: var(--c-blue-600);
+}
+
+.btn--accent {
+  background: var(--c-yellow-500);
+  color: #2a1c00;
+  box-shadow: var(--sh-xs);
+}
+.btn--accent:hover:not(:disabled) {
+  background: #e88f00;
+}
+
+.btn--white {
+  background: var(--c-white);
+  color: var(--c-blue-600);
+}
+.btn--white:hover:not(:disabled) {
+  background: var(--c-blue-50);
+}
+
+.btn--outline {
+  border-color: var(--c-border-strong);
+  background: var(--c-white);
+  color: var(--c-text);
+}
+.btn--outline:hover:not(:disabled) {
+  border-color: var(--c-blue-500);
+  color: var(--c-blue-500);
+}
+
+.btn--ghost {
+  background: transparent;
+  color: var(--c-text);
+}
+.btn--ghost:hover:not(:disabled) {
+  background: var(--c-grey-100);
+}
+
+.btn--subtle {
+  background: var(--c-blue-50);
+  color: var(--c-blue-600);
+}
+.btn--subtle:hover:not(:disabled) {
+  background: var(--c-blue-100);
+}
+
+.btn--success {
+  background: var(--c-green-500);
+  color: var(--c-white);
+}
+.btn--success:hover:not(:disabled) {
+  background: var(--c-green-700);
+}
+
+.btn--danger {
+  background: var(--c-red-500);
+  color: var(--c-white);
+}
+.btn--danger:hover:not(:disabled) {
+  background: var(--c-red-600);
+}
+
+/* Full-width buttons inside a flex column (drawer, modal) */
+.stack > .btn--block {
+  width: 100%;
+}
+
+/* ---- inline link ---- */
+.link {
+  color: var(--c-blue-500);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.link:hover {
+  color: var(--c-blue-700);
+}

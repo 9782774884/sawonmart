@@ -1,0 +1,91 @@
+/* ==========================================================================
+   PROMO TILES
+   ========================================================================== */
+
+.promo__list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--sp-4);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.promo__tile {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: var(--sp-4);
+  padding: var(--sp-4);
+  background: var(--c-surface);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  transition:
+    box-shadow var(--transition),
+    border-color var(--transition);
+}
+
+.promo__tile:hover,
+.promo__tile:focus-visible {
+  border-color: var(--c-border-strong);
+  box-shadow: var(--sh-md);
+}
+
+.promo__image {
+  width: 96px;
+  height: 64px;
+  flex-shrink: 0;
+  object-fit: cover;
+  border-radius: var(--r-md);
+}
+
+.promo__body {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+}
+
+.promo__title {
+  font-size: var(--fs-lg);
+  font-weight: 700;
+  color: var(--c-white);
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.3);
+}
+
+.promo__text {
+  font-size: var(--fs-sm);
+  color: var(--c-grey-300);
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.3);
+}
+
+.promo__cta {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  margin-left: auto;
+  border-radius: var(--r-full);
+  background: var(--c-grey-100);
+  color: var(--c-text);
+}
+
+/* The copy sits on top of the artwork, so the tile needs a dark base layer. */
+.promo__tile {
+  isolation: isolate;
+}
+
+.promo__tile::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(100deg, var(--c-grey-900), var(--c-grey-800));
+}
+
+@media (max-width: 900px) {
+  .promo__list {
+    grid-template-columns: 1fr;
+  }
+}

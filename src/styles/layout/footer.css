@@ -1,0 +1,315 @@
+/* ==========================================================================
+   FOOTER
+   ========================================================================== */
+
+.footer {
+  background: var(--c-grey-800);
+  color: var(--c-grey-200);
+  margin-top: var(--sp-10);
+  font-size: var(--fs-md);
+}
+
+/* ----------------------------------------------------------- trust strip */
+
+.footer__trust {
+  background: var(--c-white);
+  color: var(--c-text);
+  border-bottom: 1px solid var(--c-border);
+}
+
+.footer__trust-grid {
+  padding-block: var(--sp-6);
+}
+
+.footer__trust-list {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--sp-6);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer__trust-item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--sp-3);
+}
+
+.footer__trust-icon {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  border-radius: var(--r-full);
+  background: var(--c-blue-50);
+  color: var(--c-blue-500);
+}
+
+.footer__trust-title {
+  display: block;
+  font-weight: 600;
+  color: var(--c-text);
+}
+
+.footer__trust-text {
+  display: block;
+  color: var(--c-text-muted);
+  font-size: var(--fs-sm);
+}
+
+/* ----------------------------------------------------------- link columns */
+
+.footer__links {
+  padding-block: var(--sp-10);
+}
+
+.footer__links-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr)) 1.2fr 1.2fr;
+  gap: var(--sp-8) var(--sp-6);
+}
+
+.footer__group-heading {
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--c-grey-400);
+  margin-bottom: var(--sp-3);
+}
+
+.footer__group-heading--spaced {
+  margin-top: var(--sp-6);
+}
+
+.footer__group-list {
+  display: grid;
+  gap: var(--sp-2);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer__group-list a {
+  color: var(--c-grey-300);
+  font-size: var(--fs-sm);
+}
+
+.footer__group-list a:hover,
+.footer__group-list a:focus-visible {
+  color: var(--c-white);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.footer__address-text {
+  font-style: normal;
+  line-height: var(--lh-normal);
+  color: var(--c-grey-300);
+  font-size: var(--fs-sm);
+  margin-bottom: var(--sp-4);
+}
+
+/* One address part per line. Because these are block-level spans, the
+   accessibility tree exposes each as its own line, and copying the rendered
+   text keeps the line breaks. */
+.footer__address-line {
+  display: block;
+}
+
+.footer__legal-name {
+  font-size: var(--fs-base);
+  font-weight: 600;
+  color: var(--c-white);
+  margin-bottom: var(--sp-1);
+}
+
+.footer__gstin {
+  font-size: var(--fs-sm);
+  color: var(--c-grey-300);
+  margin-bottom: var(--sp-4);
+  /* Keep the whole GSTIN on one line so it can be copied accurately. */
+  white-space: nowrap;
+}
+
+.footer__gstin-label {
+  color: var(--c-grey-400);
+  letter-spacing: 0.04em;
+}
+
+.footer__gstin a {
+  color: var(--c-grey-200);
+  font-weight: 600;
+  /* GSTIN is machine-readable: keep the characters distinct and tabular. */
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.04em;
+}
+
+.footer__gstin a:hover,
+.footer__gstin a:focus-visible {
+  color: var(--c-yellow-500);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.footer__contact {
+  display: grid;
+  gap: var(--sp-2);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer__contact a {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  color: var(--c-grey-200);
+  font-size: var(--fs-sm);
+}
+
+.footer__contact a:hover {
+  color: var(--c-yellow-500);
+}
+
+.footer__whatsapp:hover {
+  color: #25d366 !important;
+}
+
+/* ------------------------------------------------------------ app badges */
+
+.footer__store-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-2);
+}
+
+.store-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  padding: var(--sp-2) var(--sp-3);
+  background: var(--c-grey-900);
+  border: 1px solid var(--c-grey-600);
+  border-radius: var(--r-md);
+  transition: border-color var(--transition);
+}
+
+.store-badge:hover,
+.store-badge:focus-visible {
+  border-color: var(--c-white);
+}
+
+.store-badge__text {
+  display: grid;
+  line-height: 1.15;
+}
+
+.store-badge__sub {
+  font-size: 9px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--c-grey-400);
+}
+
+.store-badge__name {
+  font-size: var(--fs-md);
+  font-weight: 600;
+  color: var(--c-white);
+}
+
+/* --------------------------------------------------------------- social */
+
+.footer__social {
+  display: flex;
+  gap: var(--sp-2);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer__social-link {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--r-full);
+  background: var(--c-grey-900);
+  color: var(--c-grey-200);
+  transition:
+    background var(--transition),
+    color var(--transition);
+}
+
+.footer__social-link:hover,
+.footer__social-link:focus-visible {
+  background: var(--c-blue-500);
+  color: var(--c-white);
+}
+
+/* ---------------------------------------------------------------- legal */
+
+.footer__bottom {
+  border-top: 1px solid var(--c-grey-700);
+  padding-block: var(--sp-4);
+}
+
+.footer__bottom-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-4);
+  flex-wrap: wrap;
+}
+
+.footer__copy {
+  color: var(--c-grey-400);
+  font-size: var(--fs-sm);
+}
+
+.footer__bottom-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-4);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer__bottom-links a {
+  color: var(--c-grey-400);
+  font-size: var(--fs-xs);
+}
+
+.footer__bottom-links a:hover {
+  color: var(--c-white);
+  text-decoration: underline;
+}
+
+/* ------------------------------------------------------------ responsive */
+
+@media (max-width: 1100px) {
+  .footer__links-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .footer__trust-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 700px) {
+  .footer__links-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--sp-6) var(--sp-4);
+  }
+  .footer__trust-list {
+    grid-template-columns: 1fr;
+    gap: var(--sp-4);
+  }
+  .footer__bottom-inner {
+    justify-content: center;
+    text-align: center;
+  }
+}

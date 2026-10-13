@@ -1,0 +1,32 @@
+{
+  "name": "sawonmart",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Flipkart-style storefront homepage built with React + Vite. Semantic HTML, accessible components, modular folder structure.",
+  "scripts": {
+    "dev": "vite",
+    "prebuild": "npm run check:assets",
+    "build": "vite build",
+    "preview": "vite preview",
+    "assets": "node .opencode/skills/sawonmart-assets/scripts/generate-assets.mjs",
+    "assets:photos": "node .opencode/skills/sawonmart-assets/scripts/fetch-stock-images.mjs",
+    "check:assets": "node .opencode/skills/sawonmart-assets/scripts/verify-assets.mjs",
+    "deploy": "npm run build && firebase deploy --only hosting --project sawonstore-b",
+    "deploy:hosting": "firebase deploy --only hosting --project sawonstore-b",
+    "deploy:debug": "npm run build && firebase deploy --only hosting --debug --project sawonstore-b",
+    "hosting:logs": "firebase hosting:channel:list --project sawonstore-b"
+  },
+  "dependencies": {
+    "firebase": "^13.0.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^7.18.4",
+    "recharts": "^3.10.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.4",
+    "sharp": "^0.35.5",
+    "vite": "^5.4.11"
+  }
+}

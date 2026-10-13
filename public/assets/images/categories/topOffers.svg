@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="300" height="300" fill="none" role="img">
+
+<circle cx="150" cy="150" r="150" fill="#ff4747" opacity=".12"/>
+<circle cx="150" cy="150" r="118" fill="#ff4747"/>
+<g transform="translate(0,-6)"><path d="M150 46l30 62 68 10-49 48 12 68-61-32-61 32 12-68-49-48 68-10z" fill="currentColor"/></g>
+</svg>

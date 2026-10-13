@@ -1,0 +1,77 @@
+/* ==========================================================================
+   UTILITIES — single-purpose helpers. Always the last import so they win.
+   ========================================================================== */
+
+.u-hidden {
+  display: none !important;
+}
+
+/* Visibility helpers.
+   Deliberately minimal — a `display: initial` here would silently clobber
+   component display values (e.g. .header__action-text is `display: grid`),
+   so `.u-hide-sm` only ever declares a value inside the small breakpoint. */
+
+/* Hidden on small screens only. */
+@media (max-width: 900px) {
+  .u-hide-sm {
+    display: none;
+  }
+}
+
+/* Hidden on desktop, shown on small screens.
+   A component that needs a particular display value when it appears on
+   mobile must restate it with higher specificity — see
+   `.header__actions .header__icon-btn` in layout/header.css. */
+.u-only-sm {
+  display: none;
+}
+
+.u-text-center {
+  text-align: center;
+}
+.u-text-muted {
+  color: var(--c-text-muted);
+}
+.u-text-green {
+  color: var(--c-green-700);
+}
+.u-text-red {
+  color: var(--c-red-600);
+}
+.u-text-yellow {
+  color: var(--c-yellow-700);
+}
+
+.u-bg-blue-50 {
+  background: var(--c-blue-50);
+}
+.u-bg-grey-50 {
+  background: var(--c-bg-subtle);
+}
+
+.u-mt-2 {
+  margin-top: var(--sp-2);
+}
+.u-mt-4 {
+  margin-top: var(--sp-4);
+}
+.u-mb-4 {
+  margin-bottom: var(--sp-4);
+}
+
+.u-p-4 {
+  padding: var(--sp-4);
+}
+
+.u-flex-1 {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.u-relative {
+  position: relative;
+}
+
+.u-full {
+  width: 100%;
+}

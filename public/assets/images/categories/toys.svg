@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="300" height="300" fill="none" role="img">
+
+<circle cx="150" cy="150" r="150" fill="#f0a020" opacity=".12"/>
+<circle cx="150" cy="150" r="118" fill="#f0a020"/>
+<g transform="translate(0,-6)"><circle cx="104" cy="106" r="30" fill="currentColor"/><circle cx="196" cy="106" r="30" fill="currentColor"/><circle cx="150" cy="166" r="76" fill="currentColor"/><circle cx="126" cy="152" r="12" fill="#fff" opacity=".7"/><circle cx="174" cy="152" r="12" fill="#fff" opacity=".7"/><ellipse cx="150" cy="192" rx="18" ry="13" fill="#fff" opacity=".7"/></g>
+</svg>

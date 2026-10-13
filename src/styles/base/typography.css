@@ -1,0 +1,126 @@
+/* ==========================================================================
+   TYPOGRAPHY — base text styles and the shared heading scale.
+   ========================================================================== */
+
+body {
+  font-family: var(--font-sans);
+  font-size: var(--fs-base);
+  font-weight: 400;
+  color: var(--c-text);
+  background-color: var(--c-bg);
+  text-align: left; /* guard against inherited centring */
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 600;
+  line-height: var(--lh-tight);
+  letter-spacing: var(--ls-wide);
+  text-wrap: balance;
+}
+
+h1 {
+  font-size: var(--fs-2xl);
+}
+h2 {
+  font-size: var(--fs-xl);
+}
+h3 {
+  font-size: var(--fs-lg);
+}
+h4 {
+  font-size: var(--fs-base);
+}
+
+p {
+  text-wrap: pretty;
+}
+
+/* Section titles — used across the home page sections */
+.t-section-title {
+  font-size: var(--fs-2xl);
+  font-weight: 600;
+  letter-spacing: var(--ls-wide);
+}
+
+.t-section-sub {
+  color: var(--c-text-muted);
+  font-size: var(--fs-base);
+}
+
+/* Small all-caps label used for meta rows and nav groups */
+.t-eyebrow {
+  font-size: var(--fs-xs);
+  font-weight:  600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--c-text-muted);
+}
+
+.t-price {
+  font-size: var(--fs-lg);
+  font-weight: 600;
+}
+
+.t-strike {
+  color: var(--c-text-muted);
+  text-decoration: line-through;
+  font-weight: 400;
+}
+
+.t-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.t-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.t-numeric {
+  font-variant-numeric: tabular-nums;
+}
+
+/* ==========================================================================
+   ACCESSIBILITY HELPERS
+   ========================================================================== */
+
+/* Visible only to screen readers */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Skip link: hidden until focused by a keyboard user */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: var(--sp-4);
+  z-index: var(--z-toastop);
+  padding: var(--sp-3) var(--sp-5);
+  background: var(--c-blue-500);
+  color: var(--c-text-inverse);
+  border-radius: 0 0 var(--r-md) var(--r-md);
+  font-weight: 600;
+  transition: top var(--transition);
+}
+
+.skip-link:focus {
+  top: 0;
+}

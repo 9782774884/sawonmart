@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 600" width="1600" height="600" fill="none" preserveAspectRatio="xMidYMid slice">
+<defs>
+  <linearGradient id="bg4" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#7c4dff"/>
+    <stop offset="1" stop-color="#3b1a86"/>
+  </linearGradient>
+  <pattern id="grid4" width="44" height="44" patternUnits="userSpaceOnUse">
+    <path d="M44 0H0v44" fill="none" stroke="#fff" stroke-opacity=".07" stroke-width="1"/>
+  </pattern>
+</defs>
+<rect width="1600" height="600" fill="url(#bg4)"/>
+<rect width="1600" height="600" fill="url(#grid4)"/>
+<circle cx="240" cy="404" r="186" fill="#cdbaff" opacity="0.08"/>
+<circle cx="450" cy="161" r="89" fill="#cdbaff" opacity="0.13"/>
+<circle cx="660" cy="298" r="142" fill="#cdbaff" opacity="0.18"/>
+<circle cx="870" cy="435" r="195" fill="#cdbaff" opacity="0.08"/>
+<circle cx="1080" cy="192" r="98" fill="#cdbaff" opacity="0.13"/>
+<circle cx="1290" cy="329" r="151" fill="#cdbaff" opacity="0.18"/>
+<circle cx="1500" cy="466" r="204" fill="#cdbaff" opacity="0.08"/>
+<path d="M0 470c260-70 420 40 700-20s520-120 900-40v190H0z" fill="#000" opacity=".14"/>
+<circle cx="1290" cy="300" r="180" fill="#fff" opacity=".08"/>
+<circle cx="1320" cy="272" r="96" fill="#fff" opacity=".12"/>
+</svg>

@@ -1,0 +1,303 @@
+/* ==========================================================================
+   PRODUCT CARD
+   ========================================================================== */
+
+.pcard {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: var(--c-surface);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  transition:
+    box-shadow var(--transition),
+    border-color var(--transition),
+    transform var(--transition);
+}
+
+.pcard:hover {
+  border-color: var(--c-border-strong);
+  box-shadow: var(--sh-md);
+  transform: translateY(-2px);
+}
+
+.pcard:hover .media > img,
+.pcard:hover .pcard__media img {
+  transform: scale(1.04);
+}
+
+/* --------------------------------------------------------------- media */
+
+.pcard__media {
+  position: relative;
+  padding: var(--sp-4) var(--sp-4) var(--sp-2);
+  background: linear-gradient(180deg, var(--c-grey-50), var(--c-white));
+}
+
+.pcard__media-link {
+  display: grid;
+  place-items: center;
+}
+
+.pcard__media img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1;
+  object-fit: contain;
+  mix-blend-mode: multiply;
+  transition: transform 300ms ease;
+}
+
+.pcard__badge {
+  position: absolute;
+  top: var(--sp-3);
+  left: var(--sp-3);
+}
+
+.pcard__wish {
+  position: absolute;
+  top: var(--sp-2);
+  right: var(--sp-2);
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: var(--r-full);
+  background: var(--c-surface);
+  color: var(--c-grey-400);
+  box-shadow: var(--sh-xs);
+  transition:
+    color var(--transition),
+    transform var(--transition),
+    background var(--transition);
+}
+
+.pcard__wish:hover,
+.pcard__wish:focus-visible {
+  color: var(--c-red-500);
+  transform: scale(1.1);
+}
+
+.pcard__wish.is-active {
+  color: var(--c-red-500);
+  background: var(--c-red-100);
+}
+
+.pcard__wish.is-active svg {
+  fill: currentColor;
+}
+
+/* ---------------------------------------------------------------- body */
+
+.pcard__body {
+  display: grid;
+  gap: var(--sp-2);
+  align-content: start;
+  padding: 0 var(--sp-4) var(--sp-4);
+  flex: 1;
+}
+
+.pcard__title {
+  font-size: var(--fs-md);
+  font-weight: 500;
+  line-height: 1.35;
+  min-height: 2.7em;
+}
+
+/* The title is the card's primary link to the product page. */
+.pcard__title-link {
+  color: inherit;
+}
+
+.pcard__title-link::after {
+  /* Stretches the hit area over the whole card without nesting interactive
+     elements inside <a>, which would create invalid/overlapping links. */
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.pcard__title-link:hover {
+  color: var(--c-blue-600);
+}
+
+.pcard {
+  position: relative;
+}
+
+/* Interactive controls sit above the title's stretched hit area. */
+.pcard__add,
+.pcard__wish {
+  position: relative;
+  z-index: 2;
+}
+
+.pcard__highlight {
+  font-size: var(--fs-sm);
+  margin-top: calc(-1 * var(--sp-1));
+}
+
+.pcard__price {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: var(--sp-2);
+  margin-top: var(--sp-1);
+}
+
+.pcard__price-mrp {
+  font-size: var(--fs-md);
+}
+
+.pcard__price-off {
+  font-size: var(--fs-md);
+  font-weight: 600;
+}
+
+.pcard__saving {
+  font-size: var(--fs-xs);
+  margin-top: calc(-1 * var(--sp-1));
+}
+
+/* ---- colour swatches ---- */
+.pcard__colors {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.pcard__swatch {
+  width: 14px;
+  height: 14px;
+  border-radius: var(--r-full);
+  background: var(--swatch);
+  border: 1px solid var(--c-border-strong);
+}
+
+.pcard__swatch-more {
+  font-size: var(--fs-xs);
+  color: var(--c-text-muted);
+}
+
+/* ---- delivery ---- */
+.pcard__delivery {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  font-size: var(--fs-sm);
+  color: var(--c-text-muted);
+}
+
+.pcard__delivery svg {
+  flex-shrink: 0;
+}
+
+.pcard__assured {
+  margin-top: var(--sp-1);
+}
+
+/* ------------------------------------------------------------- actions */
+
+.pcard__actions {
+  padding: 0 var(--sp-4) var(--sp-4);
+}
+
+.pcard__add {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-2);
+  width: 100%;
+  padding: var(--sp-3);
+  border-radius: var(--r-md);
+  background: var(--c-grey-100);
+  color: var(--c-text);
+  font-size: var(--fs-base);
+  font-weight: 600;
+  transition:
+    background var(--transition),
+    color var(--transition);
+}
+
+.pcard__add:hover,
+.pcard__add:focus-visible {
+  background: var(--c-blue-500);
+  color: var(--c-white);
+}
+
+/* --------------------------------------------------------- compact mode */
+
+.pcard--compact .pcard__title {
+  min-height: 0;
+  -webkit-line-clamp: 1;
+  line-clamp: 1;
+}
+
+.pcard--compact .pcard__media {
+  padding: var(--sp-3);
+}
+
+.pcard--compact .pcard__body {
+  padding: 0 var(--sp-3) var(--sp-3);
+  gap: var(--sp-1);
+}
+
+.pcard--compact .pcard__actions {
+  padding: 0 var(--sp-3) var(--sp-3);
+}
+
+.pcard--compact .pcard__add {
+  padding: var(--sp-2);
+  font-size: var(--fs-sm);
+}
+
+.pcard--compact .pcard__colors,
+.pcard--compact .pcard__delivery {
+  display: none;
+}
+
+/* --------------------------------------------------------- grid variant */
+
+.grid-products > li {
+  display: flex;
+}
+
+.grid-products .pcard {
+  width: 100%;
+}
+
+@media (max-width: 640px) {
+  .pcard__title {
+    font-size: var(--fs-sm);
+    min-height: 0;
+  }
+  .pcard__body {
+    padding: 0 var(--sp-3) var(--sp-3);
+    gap: var(--sp-1);
+  }
+  .pcard__media {
+    padding: var(--sp-3) var(--sp-3) var(--sp-1);
+  }
+  .pcard__actions {
+    padding: 0 var(--sp-3) var(--sp-3);
+  }
+  .pcard__saving,
+  .pcard__highlight {
+    display: none;
+  }
+  .pcard__add span {
+    display: none;
+  }
+  .pcard__add {
+    padding: var(--sp-3);
+  }
+  .pcard__delivery span {
+    font-size: var(--fs-xs);
+  }
+}

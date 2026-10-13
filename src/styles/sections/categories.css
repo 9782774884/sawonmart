@@ -1,0 +1,89 @@
+/* ==========================================================================
+   CATEGORY STRIP — circular shortcuts
+   ========================================================================== */
+
+.cat-strip {
+  padding-block: var(--sp-6);
+}
+
+.cat-strip__list {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(84px, 1fr);
+  gap: var(--sp-2);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.cat-strip__list::-webkit-scrollbar {
+  display: none;
+}
+
+.cat-strip__item {
+  min-width: 0;
+}
+
+.cat-strip__link {
+  display: grid;
+  justify-items: center;
+  gap: var(--sp-2);
+  padding: var(--sp-2);
+  border-radius: var(--r-lg);
+  text-align: center;
+  transition: background var(--transition);
+}
+
+.cat-strip__link:hover,
+.cat-strip__link:focus-visible {
+  background: var(--c-blue-50);
+}
+
+.cat-strip__circle {
+  display: grid;
+  place-items: center;
+  width: clamp(56px, 7vw, 80px);
+  aspect-ratio: 1;
+  border-radius: var(--r-full);
+  background: var(--c-blue-50);
+  overflow: hidden;
+  transition: transform var(--transition);
+}
+
+.cat-strip__link:hover .cat-strip__circle,
+.cat-strip__link:focus-visible .cat-strip__circle {
+  transform: scale(1.06);
+}
+
+.cat-strip__circle img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cat-strip__label {
+  font-size: var(--fs-md);
+  font-weight: 600;
+  line-height: 1.2;
+  /* Two-line clamp so labels never push the row taller */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.cat-strip__count {
+  font-size: var(--fs-xs);
+}
+
+@media (max-width: 600px) {
+  .cat-strip__label {
+    font-size: var(--fs-sm);
+  }
+  .cat-strip__count {
+    display: none;
+  }
+}

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="300" height="300" fill="none" role="img">
+
+<circle cx="150" cy="150" r="150" fill="#12a3c4" opacity=".12"/>
+<circle cx="150" cy="150" r="118" fill="#12a3c4"/>
+<g transform="translate(0,-6)"><circle cx="98" cy="176" r="56" stroke="currentColor" stroke-width="14" fill="none"/><circle cx="202" cy="176" r="56" stroke="currentColor" stroke-width="14" fill="none"/><path d="M98 176l52-88h44l52 88M150 88h44M128 176h44" stroke="currentColor" stroke-width="14" stroke-linecap="round" stroke-linejoin="round" fill="none"/></g>
+</svg>

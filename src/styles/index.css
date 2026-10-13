@@ -1,0 +1,46 @@
+/* ==========================================================================
+   styles/index.css — single entry point for all styles.
+   Files are split by responsibility (base / layout / ui / sections) so each
+   concern lives in its own folder and file. Vite bundles them all.
+   ========================================================================== */
+
+/* base */
+@import './base/reset.css';
+@import './base/variables.css';
+@import './base/typography.css';
+
+/* layout */
+@import './layout/layout.css';
+@import './layout/header.css';
+@import './layout/navbar.css';
+@import './layout/footer.css';
+@import './layout/drawer.css';
+
+/* ui components */
+@import './ui/button.css';
+@import './ui/badge.css';
+@import './ui/rating.css';
+@import './ui/carousel.css';
+@import './ui/modal.css';
+@import './ui/auth.css';
+@import './ui/toast.css';
+@import './ui/whatsapp.css';
+@import './ui/misc.css';
+
+/* home page sections */
+@import './sections/hero.css';
+@import './sections/categories.css';
+@import './sections/deals.css';
+@import './sections/product-card.css';
+@import './sections/brand-strip.css';
+@import './sections/promo.css';
+@import './sections/reviews.css';
+
+/* routed pages */
+@import './pages/product.css';
+
+/* admin control panel (scoped under .adm) */
+@import './admin/admin.css';
+
+/* last: utility classes must be able to override component styles */
+@import './utilities.css';

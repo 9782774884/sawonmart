@@ -1,0 +1,71 @@
+/* ==========================================================================
+   CAROUSEL (horizontal product rail wrapper)
+   ========================================================================== */
+
+.carousel {
+  position: relative;
+}
+
+.carousel__controls {
+  position: absolute;
+  top: 38%;
+  left: 0;
+  right: 0;
+  z-index: var(--z-base);
+  display: flex;
+  justify-content: space-between;
+  padding-inline: var(--sp-2);
+  pointer-events: none;
+}
+
+.carousel__arrow {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--r-full);
+  background: var(--c-surface);
+  color: var(--c-text);
+  border: 1px solid var(--c-border);
+  box-shadow: var(--sh-md);
+  pointer-events: auto;
+  transition:
+    background var(--transition),
+    color var(--transition),
+    opacity var(--transition);
+}
+
+.carousel__arrow:hover:not(:disabled) {
+  background: var(--c-blue-500);
+  border-color: var(--c-blue-500);
+  color: var(--c-white);
+}
+
+.carousel__arrow:disabled {
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* ---- progress bar ---- */
+.carousel__progress {
+  height: 3px;
+  margin-top: var(--sp-2);
+  background: var(--c-grey-200);
+  border-radius: var(--r-full);
+  overflow: hidden;
+}
+
+.carousel__progress-bar {
+  display: block;
+  height: 100%;
+  background: var(--c-blue-500);
+  transform-origin: left center;
+  transition: transform 120ms linear;
+}
+
+@media (max-width: 900px) {
+  /* Arrows would cover the cards on small screens; swipe instead. */
+  .carousel__controls {
+    display: none;
+  }
+}

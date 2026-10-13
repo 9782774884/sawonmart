@@ -1,0 +1,61 @@
+/* ==========================================================================
+   RATING
+   ========================================================================== */
+
+.rating {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+}
+
+.rating__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  padding: 2px 6px;
+  border-radius: var(--r-sm);
+  background: var(--c-green-500);
+  color: var(--c-white);
+  font-weight: 600;
+  line-height: 1;
+}
+
+.rating__star {
+  color: var(--c-white);
+  fill: currentColor;
+}
+
+.rating__track {
+  position: relative;
+  display: block;
+  flex: 1;
+  max-width: 72px;
+  height: 4px;
+  border-radius: var(--r-full);
+  background: var(--c-grey-200);
+  overflow: hidden;
+}
+
+.rating__fill {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--c-green-500);
+}
+
+.rating__count {
+  color: var(--c-text-muted);
+  font-size: var(--fs-xs);
+}
+
+/* ---- sizes ---- */
+.rating--sm .rating__badge {
+  padding: 1px 5px;
+  font-size: var(--fs-xs);
+}
+.rating--sm .rating__track {
+  max-width: 48px;
+}
+.rating--sm .rating__count {
+  display: none;
+}

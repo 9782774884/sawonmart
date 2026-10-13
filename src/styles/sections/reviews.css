@@ -1,0 +1,75 @@
+/* ==========================================================================
+   CUSTOMER REVIEWS
+   ========================================================================== */
+
+.reviews__list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--sp-4);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.review {
+  display: grid;
+  gap: var(--sp-3);
+  align-content: start;
+  height: 100%;
+  padding: var(--sp-5);
+  background: var(--c-surface);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-lg);
+}
+
+.review__head {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+}
+
+.review__avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--r-full);
+  flex-shrink: 0;
+}
+
+.review__who {
+  display: grid;
+}
+
+.review__name {
+  font-weight: 600;
+}
+
+.review__city {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  font-size: var(--fs-sm);
+}
+
+.review__quote {
+  margin: 0;
+}
+
+.review__quote p {
+  margin: 0;
+}
+
+.review__title {
+  font-weight: 600;
+  margin-bottom: var(--sp-1) !important;
+}
+
+.review__body {
+  color: var(--c-text-muted);
+  line-height: var(--lh-normal);
+}
+
+@media (max-width: 900px) {
+  .reviews__list {
+    grid-template-columns: 1fr;
+  }
+}

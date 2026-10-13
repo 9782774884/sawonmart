@@ -1,0 +1,56 @@
+/* ==========================================================================
+   BADGE
+   ========================================================================== */
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-1);
+  font-weight: 600;
+  line-height: 1;
+  white-space: nowrap;
+  border-radius: var(--r-sm);
+}
+
+.badge--sm {
+  padding: 3px var(--sp-2);
+  font-size: var(--fs-xs);
+}
+
+.badge--md {
+  padding: var(--sp-1) var(--sp-2);
+  font-size: var(--fs-sm);
+}
+
+.badge--neutral {
+  background: var(--c-grey-100);
+  color: var(--c-grey-600);
+}
+
+.badge--accent {
+  background: var(--c-yellow-100);
+  color: var(--c-yellow-700);
+}
+
+.badge--success {
+  background: var(--c-green-100);
+  color: var(--c-green-700);
+}
+
+.badge--danger {
+  background: var(--c-red-100);
+  color: var(--c-red-600);
+}
+
+.badge--info {
+  background: var(--c-blue-100);
+  color: var(--c-blue-700);
+}
+
+/* Flipkart-style "Assured" chip */
+.badge--assured {
+  background: var(--c-blue-500);
+  color: var(--c-white);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}

@@ -1,0 +1,31 @@
+/* ==========================================================================
+   DEALS / WEEKEND SECTIONS
+   ========================================================================== */
+
+.deals .section__head,
+.weekend .section__head {
+  padding-bottom: var(--sp-2);
+}
+
+.deals__note {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  margin-top: var(--sp-2);
+  font-size: var(--fs-sm);
+}
+
+.section__head-icon {
+  color: var(--c-yellow-500);
+}
+
+.section__head-action {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+}
+
+/* Cards inside a rail keep a consistent height even without a highlight line */
+.rail .pcard {
+  height: 100%;
+}

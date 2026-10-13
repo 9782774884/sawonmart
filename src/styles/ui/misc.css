@@ -1,0 +1,339 @@
+/* ==========================================================================
+   MISC SHARED PIECES
+   search bar, back-to-top, filter bar, app shell
+   ========================================================================== */
+
+/* ------------------------------------------------------------------ app */
+
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+}
+
+.app__main {
+  flex: 1 0 auto;
+}
+
+.app__main:focus {
+  outline: none;
+}
+
+/* ------------------------------------------------------- search + combobox */
+
+.search {
+  position: relative;
+}
+
+.search__form {
+  display: flex;
+  align-items: stretch;
+}
+
+.search__input {
+  width: 100%;
+  padding: var(--sp-3) var(--sp-4);
+  border: 1px solid transparent;
+  border-radius: var(--r-md) 0 0 var(--r-md);
+  background: var(--c-white);
+  color: var(--c-text);
+  font-size: var(--fs-base);
+  transition: box-shadow var(--transition);
+}
+
+.search__input::placeholder {
+  color: var(--c-text-muted);
+}
+
+.search__input:focus {
+  outline: none;
+  box-shadow: inset 0 0 0 2px var(--c-blue-500);
+}
+
+/* Hide the native WebKit search clear button — we provide our own affordances */
+.search__input::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+}
+
+.search__submit {
+  display: grid;
+  place-items: center;
+  width: 52px;
+  flex-shrink: 0;
+  background: var(--c-blue-600);
+  color: var(--c-white);
+  border-radius: 0 var(--r-md) var(--r-md) 0;
+}
+
+.search__submit:hover,
+.search__submit:focus-visible {
+  background: var(--c-blue-700);
+}
+
+.search__panel {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  right: 0;
+  z-index: var(--z-dropdown);
+  padding: var(--sp-3);
+  background: var(--c-surface);
+  color: var(--c-text);
+  border-radius: var(--r-md);
+  box-shadow: var(--sh-lg);
+  animation: search-in 140ms ease-out;
+}
+
+@keyframes search-in {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+}
+
+.search__panel-title {
+  padding: var(--sp-1) var(--sp-2) var(--sp-2);
+}
+
+.search__list {
+  display: grid;
+  gap: 2px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  max-height: 340px;
+  overflow-y: auto;
+}
+
+.search__option {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  width: 100%;
+  padding: var(--sp-2);
+  text-align: left;
+  border-radius: var(--r-sm);
+}
+
+.search__option.is-active,
+.search__option:hover {
+  background: var(--c-blue-50);
+}
+
+.search__thumb {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  border-radius: var(--r-sm);
+  background: var(--c-grey-50);
+  overflow: hidden;
+}
+
+.search__thumb img {
+  object-fit: contain;
+}
+
+.search__option-text {
+  min-width: 0;
+}
+
+.search__option-title {
+  display: block;
+  font-size: var(--fs-md);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.search__option-title mark {
+  background: transparent;
+  color: var(--c-blue-600);
+  font-weight: 700;
+}
+
+.search__option-meta {
+  display: block;
+  font-size: var(--fs-xs);
+}
+
+.search__empty {
+  padding: var(--sp-4);
+  color: var(--c-text-muted);
+  font-size: var(--fs-md);
+}
+
+.search__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-2);
+  list-style: none;
+  padding: 0 var(--sp-2) var(--sp-2);
+  margin: 0;
+}
+
+.search__chip {
+  padding: var(--sp-1) var(--sp-3);
+  background: var(--c-grey-100);
+  border-radius: var(--r-full);
+  font-size: var(--fs-sm);
+  color: var(--c-text-muted);
+  transition:
+    background var(--transition),
+    color var(--transition);
+}
+
+.search__chip:hover,
+.search__chip:focus-visible {
+  background: var(--c-blue-500);
+  color: var(--c-white);
+}
+
+.search__panel-foot {
+  padding-top: var(--sp-2);
+  margin-top: var(--sp-2);
+  border-top: 1px solid var(--c-border);
+}
+
+.search__foot-link {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  width: 100%;
+  padding: var(--sp-2);
+  border-radius: var(--r-sm);
+  font-size: var(--fs-sm);
+  color: var(--c-blue-600);
+  font-weight: 600;
+}
+
+.search__foot-link:hover {
+  background: var(--c-blue-50);
+}
+
+/* --------------------------------------------------------------- back to top */
+
+.back-to-top {
+  position: fixed;
+  right: var(--sp-4);
+  bottom: var(--sp-20);
+  z-index: var(--z-sticky);
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--r-full);
+  background: var(--c-surface);
+  color: var(--c-text);
+  border: 1px solid var(--c-border);
+  box-shadow: var(--sh-md);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition:
+    opacity var(--transition),
+    transform var(--transition),
+    visibility var(--transition);
+}
+
+.back-to-top.is-visible {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+}
+
+.back-to-top:hover,
+.back-to-top:focus-visible {
+  background: var(--c-blue-500);
+  border-color: var(--c-blue-500);
+  color: var(--c-white);
+}
+
+/* ----------------------------------------------------------------- filter bar */
+
+.filterbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-2);
+  margin-bottom: var(--sp-5);
+}
+
+.filterbar__chip {
+  padding: var(--sp-2) var(--sp-4);
+  border: 1px solid var(--c-border-strong);
+  border-radius: var(--r-full);
+  font-size: var(--fs-md);
+  color: var(--c-text-muted);
+  background: var(--c-surface);
+  transition:
+    background var(--transition),
+    color var(--transition),
+    border-color var(--transition);
+}
+
+.filterbar__chip:hover {
+  border-color: var(--c-blue-500);
+  color: var(--c-blue-600);
+}
+
+.filterbar__chip.is-active {
+  background: var(--c-blue-500);
+  border-color: var(--c-blue-500);
+  color: var(--c-white);
+}
+
+/* ------------------------------------------------------------------ countdown */
+
+.countdown {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+}
+
+.countdown__label {
+  font-size: var(--fs-sm);
+  color: var(--c-text-muted);
+  white-space: nowrap;
+}
+
+.countdown__digits {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-1);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.countdown__part {
+  display: grid;
+  justify-items: center;
+  min-width: 40px;
+  padding: var(--sp-1) var(--sp-2);
+  background: var(--c-grey-800);
+  color: var(--c-white);
+  border-radius: var(--r-sm);
+}
+
+.countdown__value {
+  font-size: var(--fs-base);
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.countdown__unit {
+  font-size: 9px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--c-grey-400);
+}
+
+@media (max-width: 900px) {
+  .countdown {
+    width: 100%;
+  }
+  .countdown__part {
+    min-width: 36px;
+  }
+}

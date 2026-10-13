@@ -1,0 +1,11 @@
+# robots.txt — SawonMart
+# https://www.robotstxt.org/robotstxt.html
+
+User-agent: *
+Allow: /
+
+# Build output and tooling must never be indexed
+Disallow: /dist/
+Disallow: /tools/
+
+Sitemap: https://www.sawonmart.com/sitemap.xml
